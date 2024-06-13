@@ -17,10 +17,11 @@ class _ProductState extends State<Product>{
   @override
   Widget build(BuildContext context){
     return GestureDetector(
-      child: Container(
+      child: SizedBox(
         height: 270,
         width: 138.94,
         child: Column(
+          //physics: NeverScrollableScrollPhysics(),
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(3),
@@ -53,6 +54,7 @@ class _ProductState extends State<Product>{
                 fontSize: 18, 
                 color: Color.fromARGB(255, 138, 72, 61)
               ),
+              textAlign: TextAlign.center,
             )
           ],
         ),

@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:any_time/product_data.dart';
 import 'package:any_time/widgets/product.dart';
+import 'package:auto_height_grid_view/auto_height_grid_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -18,6 +21,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   ProductTypes currentType = ProductTypes.coffee;
+
+  ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {  
     return Scaffold(
@@ -30,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         alignment: Alignment.topLeft, 
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
+          controller: _scrollController,
           physics: BouncingScrollPhysics(),
           //padding: EdgeInsets.only(left: 20, top: 15),
           child: Column(
@@ -79,7 +86,12 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             GestureDetector(
                               onTap: (){
-
+                                // double pixels = 335;
+                                // _scrollController.animateTo(
+                                //   pixels, 
+                                //   duration: Duration(milliseconds: pixels.toInt()), 
+                                //   curve: Curves.ease
+                                // );
                               },
                               child: Text(
                                 'Кофе',
@@ -89,7 +101,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.drinks.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 270) + 20;
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Напитки',
@@ -99,7 +119,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.eclairs.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 2);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Эклеры',
@@ -109,7 +137,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.cookie.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 3);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Кукис',
@@ -119,7 +155,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.sandwiches.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 4);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Сэндвичи',
@@ -129,7 +173,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.croissants.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 5);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Круассаны',
@@ -139,7 +191,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.cereal.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 6);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Каша',
@@ -149,7 +209,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.salads.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + (18 * 7);
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Салаты',
@@ -159,7 +227,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.quiche.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + 50;
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Киш',
@@ -169,7 +245,15 @@ class _HomePageState extends State<HomePage> {
                             const Padding(padding: EdgeInsets.only(left: 35)),
                             GestureDetector(
                               onTap: (){
-
+                                double pixels = 335;
+                                for(var type in ProductType.types.takeWhile((value) => value != ProductTypes.sweets.name)){
+                                  pixels += ((widget.productsData.where((element) => element.type.typeStr == type).length / 2).ceil() * 257) + 50 + 257;
+                                }
+                                _scrollController.animateTo(
+                                  pixels, 
+                                  duration: Duration(milliseconds: (pixels * 0.1).toInt()), 
+                                  curve: Curves.ease
+                                );
                               },
                               child: Text(
                                 'Сладости',
@@ -188,17 +272,194 @@ class _HomePageState extends State<HomePage> {
                         )
                       ),
                       const Padding(padding: EdgeInsets.only(top: 20)),
-                      for(int i = 0; i < widget.productsData.length; i += 2)
-                        Row(
-                          mainAxisAlignment: (i + 1) < widget.productsData.length ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.spaceAround,
-                          children: [
-                            Product(data: widget.productsData[i]),
-                            if((i + 1) < widget.productsData.length)
-                              Padding(padding: EdgeInsets.only(right: 45)),
-                            if((i + 1) < widget.productsData.length)
-                              Product(data: widget.productsData[i + 1]),
-                          ],
+                      AutoHeightGridView(
+                        itemCount: widget.productsData.where((element) => element.type.typeStr == ProductTypes.coffee.name).length,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        builder: (context, index) {
+                          return Product(data: widget.productsData.where((element) => element.type.typeStr == ProductTypes.coffee.name).elementAt(index));
+                        },
+                      ),
+                      Center(
+                        child: Text(
+                          'НАПИТКИ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
                         )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.drinks.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'ЭКЛЕРЫ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.eclairs.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'КУКИС',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.cookie.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'СЭНДВИЧИ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.sandwiches.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'КРУАССАНЫ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.croissants.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'КАША',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.cereal.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'САЛАТЫ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.salads.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'КИШ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.quiche.name))
+                            Product(data: product)
+                        ],
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      Center(
+                        child: Text(
+                          'СЛАДОСТИ',
+                          style: TextStyle(fontFamily: 'Pacifico', fontWeight: (currentType == ProductTypes.sweets) ? FontWeight.w400 : FontWeight.w400, fontSize: 30, color: Color.fromARGB(255, 138, 72, 61))
+                        )
+                      ),
+                      const Padding(padding: EdgeInsets.only(top: 20)),
+                      GridView.count(
+                        crossAxisCount: 2,
+                        shrinkWrap: true,
+                        mainAxisSpacing: 0,
+                        crossAxisSpacing: 45,
+                        childAspectRatio: 0.65,
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          for(var product in widget.productsData.where((element) => element.type.typeStr == ProductTypes.sweets.name))
+                            Product(data: product)
+                        ],
+                      ),
                     ],
                   ),
                 ),

@@ -37,6 +37,7 @@ dependencies:
   universal_html: ^2.2.4
   path_provider: ^2.0.15
   image_picker: any
+  auto_height_grid_view: ^1.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
